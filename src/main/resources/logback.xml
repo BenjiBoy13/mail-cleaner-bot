@@ -1,0 +1,16 @@
+<configuration>
+    <!-- Console Appender with colored output and timestamp -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Project log level -->
+    <logger name="personal.ben.functions.mailcleanerbot" level="DEBUG" />
+
+    <!-- Root log level for external libraries -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
