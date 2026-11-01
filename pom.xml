@@ -6,14 +6,26 @@
     <version>1.0.0</version>
 
     <properties>
+        <!-- Dependency Versions -->
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <google-could.functions-framework.version>[2.0,2.1)</google-could.functions-framework.version>
         <google-api-services.gmail.version>v1-rev20260727-2.0.0</google-api-services.gmail.version>
         <google-oauth-client.version>[1.39,1.40)</google-oauth-client.version>
         <logback.version>[1.6,1.7)</logback.version>
+
+        <!-- Plugin  Versions -->
+        <google-cloud.functions-plugin.version>1.0.2</google-cloud.functions-plugin.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.google.cloud.functions</groupId>
+            <artifactId>functions-framework-api</artifactId>
+            <version>${google-could.functions-framework.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-gmail</artifactId>
@@ -30,5 +42,19 @@
             <version>${google-oauth-client.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.google.cloud.functions</groupId>
+                <artifactId>function-maven-plugin</artifactId>
+                <version>${google-cloud.functions-plugin.version}</version>
+                <configuration>
+                    <functionTarget>personal.ben.functions.mailcleanerbot.MailCleanerFunction</functionTarget>
+                    <port>8080</port>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
