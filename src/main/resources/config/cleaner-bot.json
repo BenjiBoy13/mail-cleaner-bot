@@ -1,0 +1,11 @@
+{
+  "amountOfEmailsToReadDesc": 500,
+  "retentionPolicies": {
+    "tags": [
+      {
+        "name": "Finance",
+
+      }
+    ]
+  }
+}
